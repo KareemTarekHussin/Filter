@@ -1,0 +1,32 @@
+
+
+.textgray{
+    background-color: #F5F5F5;
+}
+.bodycolor{
+    font-family: inter;
+    font-weight: 400;
+    size: 20px;
+    line-height: 24.2px;
+    color: black;
+
+}
+
+.saveButton{
+    background-color: #1BB0F0;
+    color: #ffff;
+    size: 16px;
+    font-weight: 400;
+    line-height: 19.36px;
+    width: 217px;
+    height: 61px;
+}
+.cancelButton{
+    background-color: #D9D9D9;
+    color: #000000;
+    size: 16px;
+    font-weight: 400;
+    line-height: 19.36px;
+    width: 217px;
+    height: 61px;
+}
