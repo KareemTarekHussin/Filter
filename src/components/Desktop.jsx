@@ -1,8 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import Form from "react-bootstrap/Form";
-import RegisterForm from './RegisterForm';
 import Card from "./Card";
 import SearchBar from "./SearchBar";
 import "./Desktop.css"
@@ -11,7 +10,7 @@ import "./Desktop.css"
 export default function Desktop() {
   
   const [cards, setCards] = useState([]);
-  const history = useNavigate()
+  const Navigate = useNavigate()
 
   useEffect(() => {
     async function fetchUsers() {
@@ -36,7 +35,7 @@ export default function Desktop() {
   
 
   function handleClick(){
-    history.push('/addUser');
+    Navigate('/addUser');
   }
 
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function Card({ card }) {
   // async function deleteUsers(cardId) {
@@ -18,23 +18,23 @@ export default function Card({ card }) {
   //   }
   // }
 
-
-  const history = useNavigate()
+  const Navigate = useNavigate();
   const deleteUsers = async (cardId) => {
     try {
-      await fetch(`https://dummyapi.io/data/v1/user/${cardId}`, 
-      {
-        method: 'DELETE',
+      await fetch(`https://dummyapi.io/data/v1/user/${cardId}`, {
+        method: "DELETE",
         headers: {
           "app-id": "64fc4a747b1786417e354f31",
-      }});
+        },
+      });
     } catch (error) {
-      console.error('Error deleting card:', error);
+      console.error("Error deleting card:", error);
     }
   };
 
-  function handleClick(){
-    history.push('/addUser');
+  function handleClick(card) {
+    Navigate("/addUser", { state: { card: card } });
+    console.log("card: ", card)
   }
 
   return (
@@ -44,17 +44,25 @@ export default function Card({ card }) {
       </div>
       <div className="col-4">
         <p className="float-start text-white">
-          {card.firstName}
+          {card.firstName}{" "}
           {card.lastName}
         </p>
         <p className="col-2 textStandard">01123212212</p>
       </div>
       <div className="col-7">
         <div className="d-flex float-end">
-          <button onClick={handleClick} className="btn btn-light m-2">
+          <button
+            onClick={() => handleClick(card)}
+            className="btn btn-light m-2"
+          >
             Edit
           </button>
-          <button onClick={deleteUsers(card.id)} className="btn btn-light m-2">Delete</button>
+          <button
+            onClick={() => deleteUsers(card.id)}
+            className="btn btn-light m-2"
+          >
+            Delete
+          </button>
         </div>
       </div>
       <hr className="text-white " />

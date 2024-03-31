@@ -1,19 +1,20 @@
 import "./addUser.css";
 import imagesmall from "../assets/Ellipse1.png";
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
+export default function AddUser({card}) {
+  // const location = useLocation();
+  // const card = location.state.card;
 
-export default function AddUser({ card }) {
   const [firstName, setFirstName] = useState(card ? card.firstName : "");
-  const [lastName, setLastName] = useState(card ? card.LastName : "");
+  const [lastName, setLastName] = useState(card ? card.lastName : "");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
-const history = useNavigate()
+  const Navigate = useNavigate();
 
-
-  const handleSubmit = async (e, card) => {
-    e.preventDefault();
+  const handleSubmit = async (card) => {
     if (card) {
       const cardId = card.id;
       try {
@@ -35,7 +36,7 @@ const history = useNavigate()
 
         if (response.ok) {
           // Redirect to the Landing page
-          history.push('/Desktop');
+          Navigate("/Desktop");
         } else {
           // Handle error response from the API
           console.error("Failed to create card");
@@ -65,7 +66,7 @@ const history = useNavigate()
 
         if (response.ok) {
           // Redirect to the Landing page
-          history.push('/Desktop');
+          Navigate("/Desktop");
         } else {
           // Handle error response from the API
           console.error("Failed to create card");
@@ -76,6 +77,10 @@ const history = useNavigate()
       }
     }
   };
+
+  function handleCancel() {
+    Navigate("/Desktop");
+  }
 
   return (
     <section className="imageMain d-flex align-items-center bodycolor">
@@ -162,7 +167,12 @@ const history = useNavigate()
         <br />
         <div className="row">
           <div className="col">
-            <button className="btn cancelButton rounded-pill">Cancel</button>
+            <button
+              onClick={handleCancel}
+              className="btn cancelButton rounded-pill"
+            >
+              Cancel
+            </button>
           </div>
           <div className="col">
             <button
@@ -177,3 +187,7 @@ const history = useNavigate()
     </section>
   );
 }
+
+
+// searchbar api get get by id
+// edit not working routing 
